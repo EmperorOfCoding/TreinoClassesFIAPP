@@ -10,7 +10,7 @@ public class Menu {
         int op;
 
         do {
-            System.out.println("Escolha uma opção: \n1 - Cadastrar Personagem \n2 - Exibir Personagem \n3 - Sair");
+            System.out.println("Escolha uma opção: \n1 - Cadastrar Personagem \n2 - Exibir Personagem \n3 - Realizar Ataque \n4 - Descansar \n5 - Usar Habilidade Especial \n0 - Sair");
             op = myScanner.nextInt();
 
             switch (op) {
@@ -48,13 +48,28 @@ public class Menu {
                     break;
 
                 case 3:
+                    System.out.println("Digite o nome do ataque:");
+                    String ataque = myScanner.next() + myScanner.nextLine();
+                    personagem.atacar(ataque);
+                    break;
+
+                case 4:
+                    System.out.println("Quanto de energia pretende recuperar?");
+                    double qtdEnergia = myScanner.nextDouble();
+                    personagem.descansar(qtdEnergia);
+
+                case 5:
+                    personagem.ativarHabilidadeEspecial();
+                    break;
+
+                case 0:
                     System.out.println("Finalizando o programa...");
                     break;
 
                 default:
                     System.out.println("Opção inválida!");
             }
-        } while (op != 3);
+        } while (op != 0);
 
             myScanner.close();
         }
